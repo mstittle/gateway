@@ -1,0 +1,18 @@
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api_service1
+          uri: forward:///api/service1
+          predicates:
+            - Path=/gateway/service1/**
+        - id: api_service2
+          uri: http://www.google.com
+          predicates:
+            - Path=/gateway/service2
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
